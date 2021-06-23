@@ -23,8 +23,14 @@ client.on("message", (msg) => {
   }
 });
 
-});
+dotenv.config();
 
-dotenv.config()
-client.login(process.env.TOKEN)
-console.log('Discord client login')
+const TOKEN = process.env.TOKEN;
+
+if (!TOKEN) {
+  throw new Error("Token is not set!");
+}
+
+client.login(TOKEN);
+
+console.log("Discord client login");
